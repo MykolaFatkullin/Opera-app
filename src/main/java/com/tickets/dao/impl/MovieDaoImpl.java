@@ -1,6 +1,7 @@
 package com.tickets.dao.impl;
 
 import com.tickets.dao.MovieDao;
+import com.tickets.exception.DataProcessingException;
 import com.tickets.lib.Dao;
 import com.tickets.model.Movie;
 import com.tickets.util.HibernateUtil;
@@ -25,7 +26,7 @@ public class MovieDaoImpl implements MovieDao {
             if (transaction != null) {
                 transaction.rollback();
             }
-            throw new RuntimeException("Can't insert Movie entity", e);
+            throw new DataProcessingException("Can't insert Movie entity", e);
         } finally {
             if (session != null) {
                 session.close();
@@ -39,7 +40,7 @@ public class MovieDaoImpl implements MovieDao {
             Query<Movie> getAllMoviesQuery = session.createQuery("from movie", Movie.class);
             return getAllMoviesQuery.getResultList();
         } catch (Exception e) {
-            throw new RuntimeException("Can't get all movies");
+            throw new DataProcessingException("Can't get all movies", e);
         }
     }
 }
