@@ -1,6 +1,5 @@
 package com.tickets.service;
 
-import com.tickets.lib.Service;
 import com.tickets.model.CinemaHall;
 import java.util.List;
 
