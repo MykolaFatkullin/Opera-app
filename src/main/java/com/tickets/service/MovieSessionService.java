@@ -5,7 +5,6 @@ import com.tickets.model.MovieSession;
 import java.time.LocalDate;
 import java.util.List;
 
-@Service
 public interface MovieSessionService {
     MovieSession add(MovieSession movieSession);
 
