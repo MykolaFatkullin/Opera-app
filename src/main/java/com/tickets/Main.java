@@ -1,12 +1,16 @@
 package com.tickets;
 
+import com.tickets.exception.AuthenticationException;
 import com.tickets.lib.Injector;
 import com.tickets.model.CinemaHall;
 import com.tickets.model.Movie;
 import com.tickets.model.MovieSession;
+import com.tickets.model.User;
+import com.tickets.security.AuthenticationService;
 import com.tickets.service.CinemaHallService;
 import com.tickets.service.MovieService;
 import com.tickets.service.MovieSessionService;
+import com.tickets.service.UserService;
 import java.time.LocalDateTime;
 
 public class Main {
@@ -42,5 +46,20 @@ public class Main {
         movieSessionService.add(movieSession);
         System.out.println(movieSessionService
                 .findAvailableSessions(movie.getId(), filmTime.toLocalDate()));
+
+        User user = new User();
+        user.setEmail("example@gmail.com");
+        user.setPassword("qwerty");
+        UserService userService = (UserService) injector.getInstance(UserService.class);
+        System.out.println(userService.add(user));
+        System.out.println(userService.findByEmail("example@gmail.com").get());
+        AuthenticationService authenticationService = (AuthenticationService) injector
+                .getInstance(AuthenticationService.class);
+        System.out.println(authenticationService.register("example2@gmail.com", "qwerty"));
+        try {
+            System.out.println(authenticationService.login("example2@gmail.com", "qwerty"));
+        } catch (AuthenticationException e) {
+            throw new RuntimeException("Incorrect email or password", e);
+        }
     }
 }
