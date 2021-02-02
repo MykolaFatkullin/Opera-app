@@ -8,7 +8,6 @@ import com.tickets.util.HibernateUtil;
 import java.util.Optional;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-import org.hibernate.query.Query;
 
 @Dao
 public class UserDaoImpl implements UserDao {
@@ -37,9 +36,10 @@ public class UserDaoImpl implements UserDao {
     @Override
     public Optional<User> getByEmail(String email) {
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
-            Query<User> getUserByEmail = session.createQuery("FROM User WHERE email = :email",
-                    User.class).setParameter("email", email);
-            return getUserByEmail.uniqueResultOptional();
+            return session
+                    .createQuery("FROM User WHERE email = :email", User.class)
+                    .setParameter("email", email)
+                    .uniqueResultOptional();
         } catch (Exception e) {
             throw new DataProcessingException("Can't get user by email: " + email, e);
         }
