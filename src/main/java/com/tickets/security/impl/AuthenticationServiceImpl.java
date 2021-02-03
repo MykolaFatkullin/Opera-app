@@ -7,6 +7,7 @@ import com.tickets.lib.Inject;
 import com.tickets.lib.Service;
 import com.tickets.model.User;
 import com.tickets.security.AuthenticationService;
+import com.tickets.service.ShoppingCartService;
 import com.tickets.service.UserService;
 import java.util.Optional;
 
@@ -14,6 +15,9 @@ import java.util.Optional;
 public class AuthenticationServiceImpl implements AuthenticationService {
     @Inject
     private UserService userService;
+
+    @Inject
+    private ShoppingCartService shoppingCartService;
 
     @Override
     public User login(String email, String password) throws AuthenticationException {
@@ -27,9 +31,11 @@ public class AuthenticationServiceImpl implements AuthenticationService {
 
     @Override
     public User register(String email, String password) {
-        User newUser = new User();
-        newUser.setEmail(email);
-        newUser.setPassword(password);
-        return userService.add(newUser);
+        User user = new User();
+        user.setEmail(email);
+        user.setPassword(password);
+        User newUser = userService.add(user);
+        shoppingCartService.registerNewShoppingCart(newUser);
+        return newUser;
     }
 }
