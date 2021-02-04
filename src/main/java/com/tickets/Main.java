@@ -1,12 +1,10 @@
 package com.tickets;
 
-import com.tickets.dao.TicketDao;
 import com.tickets.exception.AuthenticationException;
 import com.tickets.lib.Injector;
 import com.tickets.model.CinemaHall;
 import com.tickets.model.Movie;
 import com.tickets.model.MovieSession;
-import com.tickets.model.Ticket;
 import com.tickets.model.User;
 import com.tickets.security.AuthenticationService;
 import com.tickets.service.CinemaHallService;
@@ -59,10 +57,6 @@ public class Main {
         } catch (AuthenticationException e) {
             throw new RuntimeException("Incorrect email or password", e);
         }
-        Ticket ticket = new Ticket();
-        ticket.setMovieSession(movieSession);
-        TicketDao ticketDao = (TicketDao) injector.getInstance(TicketDao.class);
-        System.out.println(ticketDao.add(ticket));
 
         ShoppingCartService shoppingCartService = (ShoppingCartService) injector
                 .getInstance(ShoppingCartService.class);
