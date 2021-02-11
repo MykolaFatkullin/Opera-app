@@ -3,23 +3,29 @@ package com.tickets.dao.impl;
 import com.tickets.dao.MovieSessionDao;
 import com.tickets.exception.DataProcessingException;
 import com.tickets.model.MovieSession;
-import com.tickets.util.HibernateUtil;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.List;
 import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 import org.springframework.stereotype.Repository;
 
 @Repository
 public class MovieSessionDaoImpl implements MovieSessionDao {
+    private final SessionFactory sessionFactory;
+
+    public MovieSessionDaoImpl(SessionFactory sessionFactory) {
+        this.sessionFactory = sessionFactory;
+    }
+
     @Override
     public MovieSession add(MovieSession movieSession) {
         Transaction transaction = null;
         Session session = null;
         try {
-            session = HibernateUtil.getSessionFactory().openSession();
+            session = sessionFactory.openSession();
             transaction = session.beginTransaction();
             session.save(movieSession);
             transaction.commit();
@@ -39,7 +45,7 @@ public class MovieSessionDaoImpl implements MovieSessionDao {
 
     @Override
     public List<MovieSession> findAvailableSessions(Long movieId, LocalDate date) {
-        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+        try (Session session = sessionFactory.openSession()) {
             Query<MovieSession> query = session.createQuery("FROM MovieSession "
                     + "WHERE movie.id = :movieId AND showTime "
                     + "BETWEEN :timeStart AND :timeEnd", MovieSession.class);
