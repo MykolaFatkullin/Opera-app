@@ -2,15 +2,15 @@ package com.tickets.dao.impl;
 
 import com.tickets.dao.OrderDao;
 import com.tickets.exception.DataProcessingException;
-import com.tickets.lib.Dao;
 import com.tickets.model.Order;
 import com.tickets.model.User;
 import com.tickets.util.HibernateUtil;
 import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.springframework.stereotype.Repository;
 
-@Dao
+@Repository
 public class OrderDaoImpl implements OrderDao {
     @Override
     public Order add(Order order) {

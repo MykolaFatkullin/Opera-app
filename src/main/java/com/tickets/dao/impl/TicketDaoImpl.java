@@ -2,13 +2,13 @@ package com.tickets.dao.impl;
 
 import com.tickets.dao.TicketDao;
 import com.tickets.exception.DataProcessingException;
-import com.tickets.lib.Dao;
 import com.tickets.model.Ticket;
 import com.tickets.util.HibernateUtil;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.springframework.stereotype.Repository;
 
-@Dao
+@Repository
 public class TicketDaoImpl implements TicketDao {
     @Override
     public Ticket add(Ticket ticket) {

@@ -2,15 +2,15 @@ package com.tickets.dao.impl;
 
 import com.tickets.dao.MovieDao;
 import com.tickets.exception.DataProcessingException;
-import com.tickets.lib.Dao;
 import com.tickets.model.Movie;
 import com.tickets.util.HibernateUtil;
 import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
+import org.springframework.stereotype.Repository;
 
-@Dao
+@Repository
 public class MovieDaoImpl implements MovieDao {
     @Override
     public Movie add(Movie movie) {

@@ -2,7 +2,6 @@ package com.tickets.dao.impl;
 
 import com.tickets.dao.MovieSessionDao;
 import com.tickets.exception.DataProcessingException;
-import com.tickets.lib.Dao;
 import com.tickets.model.MovieSession;
 import com.tickets.util.HibernateUtil;
 import java.time.LocalDate;
@@ -11,8 +10,9 @@ import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
+import org.springframework.stereotype.Repository;
 
-@Dao
+@Repository
 public class MovieSessionDaoImpl implements MovieSessionDao {
     @Override
     public MovieSession add(MovieSession movieSession) {
