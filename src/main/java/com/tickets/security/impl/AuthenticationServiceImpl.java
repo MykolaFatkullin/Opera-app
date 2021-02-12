@@ -3,20 +3,23 @@ package com.tickets.security.impl;
 import static com.tickets.util.HashUtil.hashPassword;
 
 import com.tickets.exception.AuthenticationException;
-import com.tickets.lib.Inject;
-import com.tickets.lib.Service;
 import com.tickets.model.User;
 import com.tickets.security.AuthenticationService;
 import com.tickets.service.ShoppingCartService;
 import com.tickets.service.UserService;
 import java.util.Optional;
+import org.springframework.stereotype.Service;
 
 @Service
 public class AuthenticationServiceImpl implements AuthenticationService {
-    @Inject
-    private UserService userService;
-    @Inject
-    private ShoppingCartService shoppingCartService;
+    private final UserService userService;
+    private final ShoppingCartService shoppingCartService;
+
+    public AuthenticationServiceImpl(UserService userService,
+                                     ShoppingCartService shoppingCartService) {
+        this.userService = userService;
+        this.shoppingCartService = shoppingCartService;
+    }
 
     @Override
     public User login(String email, String password) throws AuthenticationException {

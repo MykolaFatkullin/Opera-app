@@ -2,21 +2,27 @@ package com.tickets.dao.impl;
 
 import com.tickets.dao.ShoppingCartDao;
 import com.tickets.exception.DataProcessingException;
-import com.tickets.lib.Dao;
 import com.tickets.model.ShoppingCart;
 import com.tickets.model.User;
-import com.tickets.util.HibernateUtil;
 import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.springframework.stereotype.Repository;
 
-@Dao
+@Repository
 public class ShoppingCartDaoImpl implements ShoppingCartDao {
+    private final SessionFactory sessionFactory;
+
+    public ShoppingCartDaoImpl(SessionFactory sessionFactory) {
+        this.sessionFactory = sessionFactory;
+    }
+
     @Override
     public ShoppingCart add(ShoppingCart shoppingCart) {
         Transaction transaction = null;
         Session session = null;
         try {
-            session = HibernateUtil.getSessionFactory().openSession();
+            session = sessionFactory.openSession();
             transaction = session.beginTransaction();
             session.save(shoppingCart);
             transaction.commit();
@@ -36,7 +42,7 @@ public class ShoppingCartDaoImpl implements ShoppingCartDao {
 
     @Override
     public ShoppingCart getByUser(User user) {
-        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+        try (Session session = sessionFactory.openSession()) {
             return session
                     .createQuery("FROM ShoppingCart sc LEFT JOIN FETCH sc.tickets "
                             + "WHERE sc.user = :user", ShoppingCart.class)
@@ -52,7 +58,7 @@ public class ShoppingCartDaoImpl implements ShoppingCartDao {
         Transaction transaction = null;
         Session session = null;
         try {
-            session = HibernateUtil.getSessionFactory().openSession();
+            session = sessionFactory.openSession();
             transaction = session.beginTransaction();
             session.update(shoppingCart);
             transaction.commit();

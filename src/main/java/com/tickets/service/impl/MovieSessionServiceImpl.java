@@ -1,17 +1,19 @@
 package com.tickets.service.impl;
 
 import com.tickets.dao.MovieSessionDao;
-import com.tickets.lib.Inject;
-import com.tickets.lib.Service;
 import com.tickets.model.MovieSession;
 import com.tickets.service.MovieSessionService;
 import java.time.LocalDate;
 import java.util.List;
+import org.springframework.stereotype.Service;
 
 @Service
 public class MovieSessionServiceImpl implements MovieSessionService {
-    @Inject
-    private MovieSessionDao movieSessionDao;
+    private final MovieSessionDao movieSessionDao;
+
+    public MovieSessionServiceImpl(MovieSessionDao movieSessionDao) {
+        this.movieSessionDao = movieSessionDao;
+    }
 
     @Override
     public MovieSession add(MovieSession movieSession) {

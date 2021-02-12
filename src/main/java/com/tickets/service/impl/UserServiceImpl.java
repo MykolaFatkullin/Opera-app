@@ -1,17 +1,19 @@
 package com.tickets.service.impl;
 
 import com.tickets.dao.UserDao;
-import com.tickets.lib.Inject;
-import com.tickets.lib.Service;
 import com.tickets.model.User;
 import com.tickets.service.UserService;
 import com.tickets.util.HashUtil;
 import java.util.Optional;
+import org.springframework.stereotype.Service;
 
 @Service
 public class UserServiceImpl implements UserService {
-    @Inject
-    private UserDao userDao;
+    private final UserDao userDao;
+
+    public UserServiceImpl(UserDao userDao) {
+        this.userDao = userDao;
+    }
 
     @Override
     public User add(User user) {
