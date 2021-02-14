@@ -47,7 +47,8 @@ public class MovieSessionController {
     }
 
     @PutMapping
-    public void updateSession(@RequestParam Long id, @RequestBody MovieSessionRequestDto movieSessionRequestDto) {
+    public void updateSession(@RequestParam Long id,
+                              @RequestBody MovieSessionRequestDto movieSessionRequestDto) {
         MovieSession movieSession = movieSessionMapper.dtoToMap(movieSessionRequestDto);
         movieSession.setId(id);
         movieSessionService.update(movieSession);
