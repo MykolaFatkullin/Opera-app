@@ -1,7 +1,6 @@
 package com.tickets.model.dto;
 
 public class MovieSessionRequestDto {
-    private String id;
     private String movieId;
     private String cinemaHallId;
     private String showTime;
@@ -30,11 +29,4 @@ public class MovieSessionRequestDto {
         this.showTime = showTime;
     }
 
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
 }

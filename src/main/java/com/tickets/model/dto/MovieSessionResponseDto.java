@@ -1,19 +1,10 @@
 package com.tickets.model.dto;
 
 public class MovieSessionResponseDto {
-    private Long id;
     private String movieTitle;
     private String movieDescription;
     private String cinemaHallDescription;
     private String showTime;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public String getMovieTitle() {
         return movieTitle;

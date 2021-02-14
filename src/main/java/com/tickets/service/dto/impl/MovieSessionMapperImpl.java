@@ -25,7 +25,6 @@ public class MovieSessionMapperImpl implements MovieSessionMapper {
     @Override
     public MovieSessionResponseDto mapToDto(MovieSession movieSession) {
         MovieSessionResponseDto movieSessionResponseDto = new MovieSessionResponseDto();
-        movieSessionResponseDto.setId(movieSession.getId());
         movieSessionResponseDto.setMovieTitle(movieSession.getMovie().getTitle());
         movieSessionResponseDto.setMovieDescription(movieSession.getMovie().getDescription());
         movieSessionResponseDto.setCinemaHallDescription(movieSession.getCinemaHall()
@@ -41,7 +40,6 @@ public class MovieSessionMapperImpl implements MovieSessionMapper {
         CinemaHall cinemaHall = cinemaHallService.getById(Long.valueOf(
                 movieSessionRequestDto.getCinemaHallId()));
         MovieSession movieSession = new MovieSession();
-        movieSession.setId(Long.valueOf(movieSessionRequestDto.getId()));
         movieSession.setMovie(movie);
         movieSession.setCinemaHall(cinemaHall);
         movieSession.setShowTime(LocalDateTime.parse(movieSessionRequestDto.getShowTime(),

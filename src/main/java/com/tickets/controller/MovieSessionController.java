@@ -47,14 +47,14 @@ public class MovieSessionController {
     }
 
     @PutMapping
-    public void updateSession(@RequestBody MovieSessionRequestDto movieSessionRequestDto) {
+    public void updateSession(@RequestParam Long id, @RequestBody MovieSessionRequestDto movieSessionRequestDto) {
         MovieSession movieSession = movieSessionMapper.dtoToMap(movieSessionRequestDto);
+        movieSession.setId(id);
         movieSessionService.update(movieSession);
     }
 
     @DeleteMapping
-    public void deleteSession(@RequestBody MovieSessionRequestDto movieSessionRequestDto) {
-        MovieSession movieSession = movieSessionMapper.dtoToMap(movieSessionRequestDto);
-        movieSessionService.delete(movieSession);
+    public void deleteSession(@RequestParam Long id) {
+        movieSessionService.delete(id);
     }
 }
