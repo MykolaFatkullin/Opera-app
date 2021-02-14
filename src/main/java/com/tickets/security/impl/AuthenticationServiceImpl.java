@@ -5,8 +5,8 @@ import static com.tickets.util.HashUtil.hashPassword;
 import com.tickets.exception.AuthenticationException;
 import com.tickets.model.User;
 import com.tickets.security.AuthenticationService;
-import com.tickets.service.ShoppingCartService;
-import com.tickets.service.UserService;
+import com.tickets.service.model.ShoppingCartService;
+import com.tickets.service.model.UserService;
 import java.util.Optional;
 import org.springframework.stereotype.Service;
 

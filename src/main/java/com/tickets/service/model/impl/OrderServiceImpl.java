@@ -1,12 +1,12 @@
-package com.tickets.service.impl;
+package com.tickets.service.model.impl;
 
 import com.tickets.dao.OrderDao;
 import com.tickets.model.Order;
 import com.tickets.model.ShoppingCart;
 import com.tickets.model.Ticket;
 import com.tickets.model.User;
-import com.tickets.service.OrderService;
-import com.tickets.service.ShoppingCartService;
+import com.tickets.service.model.OrderService;
+import com.tickets.service.model.ShoppingCartService;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;

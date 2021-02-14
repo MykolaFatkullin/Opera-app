@@ -1,8 +1,8 @@
-package com.tickets.service.impl;
+package com.tickets.service.model.impl;
 
 import com.tickets.dao.CinemaHallDao;
 import com.tickets.model.CinemaHall;
-import com.tickets.service.CinemaHallService;
+import com.tickets.service.model.CinemaHallService;
 import java.util.List;
 import org.springframework.stereotype.Service;
 
@@ -22,5 +22,10 @@ public class CinemaHallServiceImpl implements CinemaHallService {
     @Override
     public List<CinemaHall> getAll() {
         return cinemaHallDao.getAll();
+    }
+
+    @Override
+    public CinemaHall getById(Long id) {
+        return cinemaHallDao.getById(id).orElseThrow(RuntimeException::new);
     }
 }

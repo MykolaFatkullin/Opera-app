@@ -1,4 +1,4 @@
-package com.tickets.service.impl;
+package com.tickets.service.model.impl;
 
 import com.tickets.dao.ShoppingCartDao;
 import com.tickets.dao.TicketDao;
@@ -6,7 +6,7 @@ import com.tickets.model.MovieSession;
 import com.tickets.model.ShoppingCart;
 import com.tickets.model.Ticket;
 import com.tickets.model.User;
-import com.tickets.service.ShoppingCartService;
+import com.tickets.service.model.ShoppingCartService;
 import org.springframework.stereotype.Service;
 
 @Service

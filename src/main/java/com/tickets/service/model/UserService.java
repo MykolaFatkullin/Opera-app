@@ -1,4 +1,4 @@
-package com.tickets.service;
+package com.tickets.service.model;
 
 import com.tickets.model.User;
 import java.util.Optional;

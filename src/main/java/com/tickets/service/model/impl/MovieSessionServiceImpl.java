@@ -1,8 +1,8 @@
-package com.tickets.service.impl;
+package com.tickets.service.model.impl;
 
 import com.tickets.dao.MovieSessionDao;
 import com.tickets.model.MovieSession;
-import com.tickets.service.MovieSessionService;
+import com.tickets.service.model.MovieSessionService;
 import java.time.LocalDate;
 import java.util.List;
 import org.springframework.stereotype.Service;
@@ -23,5 +23,15 @@ public class MovieSessionServiceImpl implements MovieSessionService {
     @Override
     public List<MovieSession> findAvailableSessions(Long movieId, LocalDate date) {
         return movieSessionDao.findAvailableSessions(movieId, date);
+    }
+
+    @Override
+    public void update(MovieSession movieSession) {
+        movieSessionDao.update(movieSession);
+    }
+
+    @Override
+    public void delete(MovieSession movieSession) {
+        movieSessionDao.delete(movieSession);
     }
 }
