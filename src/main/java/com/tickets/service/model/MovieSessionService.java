@@ -1,4 +1,4 @@
-package com.tickets.service;
+package com.tickets.service.model;
 
 import com.tickets.model.MovieSession;
 import java.time.LocalDate;
@@ -8,4 +8,8 @@ public interface MovieSessionService {
     MovieSession add(MovieSession movieSession);
 
     List<MovieSession> findAvailableSessions(Long movieId, LocalDate date);
+
+    void update(MovieSession movieSession);
+
+    void delete(Long id);
 }

@@ -1,8 +1,8 @@
-package com.tickets.service.impl;
+package com.tickets.service.model.impl;
 
 import com.tickets.dao.UserDao;
 import com.tickets.model.User;
-import com.tickets.service.UserService;
+import com.tickets.service.model.UserService;
 import com.tickets.util.HashUtil;
 import java.util.Optional;
 import org.springframework.stereotype.Service;

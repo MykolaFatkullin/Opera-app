@@ -1,4 +1,4 @@
-package com.tickets.service;
+package com.tickets.service.model;
 
 import com.tickets.model.MovieSession;
 import com.tickets.model.ShoppingCart;

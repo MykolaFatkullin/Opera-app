@@ -1,4 +1,4 @@
-package com.tickets.service;
+package com.tickets.service.model;
 
 import com.tickets.model.Movie;
 import java.util.List;
@@ -7,4 +7,6 @@ public interface MovieService {
     Movie add(Movie movie);
 
     List<Movie> getAll();
+
+    Movie getById(Long id);
 }
