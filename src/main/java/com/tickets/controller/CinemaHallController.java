@@ -3,7 +3,7 @@ package com.tickets.controller;
 import com.tickets.model.CinemaHall;
 import com.tickets.model.dto.CinemaHallRequestDto;
 import com.tickets.model.dto.CinemaHallResponseDto;
-import com.tickets.service.dto.CinemaHallMapper;
+import com.tickets.service.mapper.CinemaHallMapper;
 import com.tickets.service.model.CinemaHallService;
 import java.util.List;
 import java.util.stream.Collectors;

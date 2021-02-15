@@ -3,7 +3,7 @@ package com.tickets.controller;
 import com.tickets.model.Movie;
 import com.tickets.model.dto.MovieRequestDto;
 import com.tickets.model.dto.MovieResponseDto;
-import com.tickets.service.dto.MovieMapper;
+import com.tickets.service.mapper.MovieMapper;
 import com.tickets.service.model.MovieService;
 import java.util.List;
 import java.util.stream.Collectors;

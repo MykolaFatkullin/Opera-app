@@ -1,4 +1,4 @@
-package com.tickets.service.dto;
+package com.tickets.service.mapper;
 
 import com.tickets.model.Movie;
 import com.tickets.model.dto.MovieRequestDto;

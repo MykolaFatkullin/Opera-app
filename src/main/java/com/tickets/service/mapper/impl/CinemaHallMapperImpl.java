@@ -1,9 +1,9 @@
-package com.tickets.service.dto.impl;
+package com.tickets.service.mapper.impl;
 
 import com.tickets.model.CinemaHall;
 import com.tickets.model.dto.CinemaHallRequestDto;
 import com.tickets.model.dto.CinemaHallResponseDto;
-import com.tickets.service.dto.CinemaHallMapper;
+import com.tickets.service.mapper.CinemaHallMapper;
 import org.springframework.stereotype.Service;
 
 @Service

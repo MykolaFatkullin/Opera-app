@@ -1,4 +1,4 @@
-package com.tickets.service.dto;
+package com.tickets.service.mapper;
 
 public interface GenericDto<T, V, O> {
     T mapToDto(O object);

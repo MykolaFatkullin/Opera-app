@@ -1,11 +1,11 @@
-package com.tickets.service.dto.impl;
+package com.tickets.service.mapper.impl;
 
 import com.tickets.model.CinemaHall;
 import com.tickets.model.Movie;
 import com.tickets.model.MovieSession;
 import com.tickets.model.dto.MovieSessionRequestDto;
 import com.tickets.model.dto.MovieSessionResponseDto;
-import com.tickets.service.dto.MovieSessionMapper;
+import com.tickets.service.mapper.MovieSessionMapper;
 import com.tickets.service.model.CinemaHallService;
 import com.tickets.service.model.MovieService;
 import java.time.LocalDateTime;
