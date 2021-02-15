@@ -7,4 +7,6 @@ public interface UserDao {
     User add(User user);
 
     Optional<User> getByEmail(String email);
+
+    Optional<User> getById(Long id);
 }
