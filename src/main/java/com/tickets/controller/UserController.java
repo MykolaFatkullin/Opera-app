@@ -21,8 +21,8 @@ public class UserController {
     }
 
     @GetMapping("/by-email")
-    public UserResponseDto getById(@RequestParam String email) {
+    public UserResponseDto getByEmail(@RequestParam String email) {
         User user = userService.findByEmail(email).orElseThrow(RuntimeException::new);
-        return userMapper.mapToDto(user);
+        return userMapper.entityToMap(user);
     }
 }

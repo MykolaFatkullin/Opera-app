@@ -7,21 +7,23 @@ import com.tickets.service.mapper.OrderMapper;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.stream.Collectors;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 
-@Service
+@Component
 public class OrderMapperImpl implements OrderMapper {
+    private static final String DATE_FORMAT = "dd.MM.yyyy HH:mm";
+
     @Override
-    public OrderResponseDto mapToDto(Order order) {
+    public OrderResponseDto entityToMap(Order order) {
         OrderResponseDto orderResponseDto = new OrderResponseDto();
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern(DATE_FORMAT);
         orderResponseDto.setOrderDate(order.getOrderDate().format(formatter));
         orderResponseDto.setId(order.getId());
         List<Long> ticketsId = order.getTickets()
                 .stream()
                 .map(Ticket::getId)
                 .collect(Collectors.toList());
-        orderResponseDto.setTicketsId(ticketsId);
+        orderResponseDto.setTicketsIds(ticketsId);
         return orderResponseDto;
     }
 }

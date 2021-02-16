@@ -26,7 +26,7 @@ public class MovieController {
 
     @PostMapping
     public void addMovie(@RequestBody MovieRequestDto movieRequestDto) {
-        Movie movie = movieMapper.dtoToMap(movieRequestDto);
+        Movie movie = movieMapper.mapToEntity(movieRequestDto);
         movieService.add(movie);
     }
 
@@ -34,7 +34,7 @@ public class MovieController {
     public List<MovieResponseDto> getAllMovies() {
         return movieService.getAll()
                 .stream()
-                .map(movieMapper::mapToDto)
+                .map(movieMapper::entityToMap)
                 .collect(Collectors.toList());
     }
 }

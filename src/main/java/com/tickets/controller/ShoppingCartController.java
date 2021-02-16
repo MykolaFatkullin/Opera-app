@@ -38,6 +38,6 @@ public class ShoppingCartController {
     @GetMapping("/by-user")
     public ShoppingCartResponseDto getByUser(@RequestParam Long userId) {
         ShoppingCart shoppingCart = shoppingCartService.getByUser(userService.getById(userId));
-        return shoppingCartMapper.mapToDto(shoppingCart);
+        return shoppingCartMapper.entityToMap(shoppingCart);
     }
 }

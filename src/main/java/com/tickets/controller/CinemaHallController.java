@@ -27,7 +27,7 @@ public class CinemaHallController {
 
     @PostMapping
     public void addCinemaHall(@RequestBody CinemaHallRequestDto cinemaHallRequestDto) {
-        CinemaHall cinemaHall = cinemaHallMapper.dtoToMap(cinemaHallRequestDto);
+        CinemaHall cinemaHall = cinemaHallMapper.mapToEntity(cinemaHallRequestDto);
         cinemaHallService.add(cinemaHall);
     }
 
@@ -35,7 +35,7 @@ public class CinemaHallController {
     public List<CinemaHallResponseDto> getAll() {
         return cinemaHallService.getAll()
                 .stream()
-                .map(cinemaHallMapper::mapToDto)
+                .map(cinemaHallMapper::entityToMap)
                 .collect(Collectors.toList());
     }
 }

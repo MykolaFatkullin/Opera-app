@@ -6,19 +6,19 @@ import com.tickets.model.dto.ShoppingCartResponseDto;
 import com.tickets.service.mapper.ShoppingCartMapper;
 import java.util.List;
 import java.util.stream.Collectors;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 
-@Service
+@Component
 public class ShoppingCartMapperImpl implements ShoppingCartMapper {
     @Override
-    public ShoppingCartResponseDto mapToDto(ShoppingCart shoppingCart) {
+    public ShoppingCartResponseDto entityToMap(ShoppingCart shoppingCart) {
         ShoppingCartResponseDto shoppingCartResponseDto = new ShoppingCartResponseDto();
         shoppingCartResponseDto.setId(shoppingCart.getId());
         List<Long> ticketsId = shoppingCart.getTickets()
                 .stream()
                 .map(Ticket::getId)
                 .collect(Collectors.toList());
-        shoppingCartResponseDto.setTicketsId(ticketsId);
+        shoppingCartResponseDto.setTicketsIds(ticketsId);
         return shoppingCartResponseDto;
     }
 }
