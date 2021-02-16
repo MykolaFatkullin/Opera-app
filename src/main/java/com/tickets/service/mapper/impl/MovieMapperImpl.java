@@ -4,9 +4,9 @@ import com.tickets.model.Movie;
 import com.tickets.model.dto.MovieRequestDto;
 import com.tickets.model.dto.MovieResponseDto;
 import com.tickets.service.mapper.MovieMapper;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 
-@Service
+@Component
 public class MovieMapperImpl implements MovieMapper {
     @Override
     public MovieResponseDto mapToDto(Movie movie) {
@@ -18,7 +18,7 @@ public class MovieMapperImpl implements MovieMapper {
     }
 
     @Override
-    public Movie dtoToMap(MovieRequestDto movieRequestDto) {
+    public Movie mapToEntity(MovieRequestDto movieRequestDto) {
         Movie movie = new Movie();
         movie.setTitle(movieRequestDto.getTitle());
         movie.setDescription(movieRequestDto.getDescription());

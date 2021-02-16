@@ -26,7 +26,7 @@ public class MovieController {
 
     @PostMapping
     public void addMovie(@RequestBody MovieRequestDto movieRequestDto) {
-        Movie movie = movieMapper.dtoToMap(movieRequestDto);
+        Movie movie = movieMapper.mapToEntity(movieRequestDto);
         movieService.add(movie);
     }
 

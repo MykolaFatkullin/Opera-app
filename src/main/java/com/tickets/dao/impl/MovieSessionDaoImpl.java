@@ -6,6 +6,7 @@ import com.tickets.model.MovieSession;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.List;
+import java.util.Optional;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -101,6 +102,15 @@ public class MovieSessionDaoImpl implements MovieSessionDao {
             if (session != null) {
                 session.close();
             }
+        }
+    }
+
+    @Override
+    public Optional<MovieSession> getById(Long movieSessionId) {
+        try (Session session = sessionFactory.openSession()) {
+            return Optional.ofNullable(session.get(MovieSession.class, movieSessionId));
+        } catch (Exception e) {
+            throw new DataProcessingException("Can't get movie session by id " + movieSessionId, e);
         }
     }
 }

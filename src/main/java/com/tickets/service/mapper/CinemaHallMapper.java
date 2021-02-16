@@ -4,7 +4,7 @@ import com.tickets.model.CinemaHall;
 import com.tickets.model.dto.CinemaHallRequestDto;
 import com.tickets.model.dto.CinemaHallResponseDto;
 
-public interface CinemaHallMapper extends GenericDto
-        <CinemaHallResponseDto, CinemaHallRequestDto, CinemaHall> {
+public interface CinemaHallMapper extends GenericMapToDto
+        <CinemaHallResponseDto, CinemaHall>, GenericMapToEntity<CinemaHallRequestDto, CinemaHall> {
 
 }
