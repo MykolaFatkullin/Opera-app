@@ -5,6 +5,6 @@ import com.tickets.model.dto.MovieSessionRequestDto;
 import com.tickets.model.dto.MovieSessionResponseDto;
 
 public interface MovieSessionMapper extends
-        GenericEntityToMap<MovieSessionResponseDto, MovieSession>,
+        GenericMapToDto<MovieSessionResponseDto, MovieSession>,
         GenericMapToEntity<MovieSessionRequestDto, MovieSession> {
 }

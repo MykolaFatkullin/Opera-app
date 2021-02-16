@@ -11,14 +11,14 @@ import org.springframework.stereotype.Component;
 @Component
 public class ShoppingCartMapperImpl implements ShoppingCartMapper {
     @Override
-    public ShoppingCartResponseDto entityToMap(ShoppingCart shoppingCart) {
+    public ShoppingCartResponseDto mapToDto(ShoppingCart shoppingCart) {
         ShoppingCartResponseDto shoppingCartResponseDto = new ShoppingCartResponseDto();
         shoppingCartResponseDto.setId(shoppingCart.getId());
-        List<Long> ticketsId = shoppingCart.getTickets()
+        List<Long> ticketIds = shoppingCart.getTickets()
                 .stream()
                 .map(Ticket::getId)
                 .collect(Collectors.toList());
-        shoppingCartResponseDto.setTicketsIds(ticketsId);
+        shoppingCartResponseDto.setTicketsIds(ticketIds);
         return shoppingCartResponseDto;
     }
 }

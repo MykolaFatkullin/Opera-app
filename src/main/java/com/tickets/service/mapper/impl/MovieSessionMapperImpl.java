@@ -24,7 +24,7 @@ public class MovieSessionMapperImpl implements MovieSessionMapper {
     }
 
     @Override
-    public MovieSessionResponseDto entityToMap(MovieSession movieSession) {
+    public MovieSessionResponseDto mapToDto(MovieSession movieSession) {
         MovieSessionResponseDto movieSessionResponseDto = new MovieSessionResponseDto();
         movieSessionResponseDto.setMovieTitle(movieSession.getMovie().getTitle());
         movieSessionResponseDto.setMovieDescription(movieSession.getMovie().getDescription());

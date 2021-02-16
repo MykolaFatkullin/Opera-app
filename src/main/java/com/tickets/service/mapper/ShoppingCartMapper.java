@@ -4,5 +4,5 @@ import com.tickets.model.ShoppingCart;
 import com.tickets.model.dto.ShoppingCartResponseDto;
 
 public interface ShoppingCartMapper extends
-        GenericEntityToMap<ShoppingCartResponseDto, ShoppingCart> {
+        GenericMapToDto<ShoppingCartResponseDto, ShoppingCart> {
 }
