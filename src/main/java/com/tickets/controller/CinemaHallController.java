@@ -5,6 +5,7 @@ import com.tickets.model.dto.CinemaHallRequestDto;
 import com.tickets.model.dto.CinemaHallResponseDto;
 import com.tickets.service.mapper.CinemaHallMapper;
 import com.tickets.service.model.CinemaHallService;
+import jakarta.validation.Valid;
 import java.util.List;
 import java.util.stream.Collectors;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -26,7 +27,7 @@ public class CinemaHallController {
     }
 
     @PostMapping
-    public void addCinemaHall(@RequestBody CinemaHallRequestDto cinemaHallRequestDto) {
+    public void addCinemaHall(@RequestBody @Valid CinemaHallRequestDto cinemaHallRequestDto) {
         CinemaHall cinemaHall = cinemaHallMapper.mapToEntity(cinemaHallRequestDto);
         cinemaHallService.add(cinemaHall);
     }

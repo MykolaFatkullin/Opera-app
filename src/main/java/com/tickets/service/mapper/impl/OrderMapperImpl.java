@@ -17,7 +17,7 @@ public class OrderMapperImpl implements OrderMapper {
     public OrderResponseDto mapToDto(Order order) {
         OrderResponseDto orderResponseDto = new OrderResponseDto();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern(DATE_FORMAT);
-        orderResponseDto.setOrderDate(order.getOrderDate().format(formatter));
+        orderResponseDto.setOrderDate(order.getOrderDate());
         orderResponseDto.setId(order.getId());
         List<Long> ticketIds = order.getTickets()
                 .stream()

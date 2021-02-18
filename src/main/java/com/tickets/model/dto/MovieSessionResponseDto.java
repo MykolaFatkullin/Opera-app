@@ -1,10 +1,14 @@
 package com.tickets.model.dto;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import java.time.LocalDateTime;
+
 public class MovieSessionResponseDto {
     private String movieTitle;
     private String movieDescription;
     private String cinemaHallDescription;
-    private String showTime;
+    @JsonFormat(pattern = "dd.MM.yyyy HH:mm")
+    private LocalDateTime showTime;
 
     public String getMovieTitle() {
         return movieTitle;
@@ -30,11 +34,11 @@ public class MovieSessionResponseDto {
         this.cinemaHallDescription = cinemaHallDescription;
     }
 
-    public String getShowTime() {
+    public LocalDateTime getShowTime() {
         return showTime;
     }
 
-    public void setShowTime(String showTime) {
+    public void setShowTime(LocalDateTime showTime) {
         this.showTime = showTime;
     }
 }
