@@ -1,11 +1,11 @@
 package com.tickets.util;
 
 import com.tickets.annotation.EmailValidation;
-import jakarta.validation.ConstraintValidator;
-import jakarta.validation.ConstraintValidatorContext;
+import javax.validation.ConstraintValidator;
+import javax.validation.ConstraintValidatorContext;
 
 public class EmailValidator implements ConstraintValidator<EmailValidation, String> {
-    private static final String REGEX = "[/A[^@]+@([^@\\.]+\\.)+[^@\\.]+z/]";
+    private static final String REGEX = "^\\S+@\\S+\\.\\S+$";
 
     @Override
     public boolean isValid(String email, ConstraintValidatorContext context) {

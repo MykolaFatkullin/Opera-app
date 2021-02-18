@@ -1,7 +1,7 @@
 package com.tickets.model.dto;
 
-import com.sun.istack.NotNull;
-import jakarta.validation.constraints.Min;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 
 public class CinemaHallRequestDto {
     @Min(value = 1, message = "Incorrect capacity, minimum 1")

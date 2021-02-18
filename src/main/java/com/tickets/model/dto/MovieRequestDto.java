@@ -1,6 +1,6 @@
 package com.tickets.model.dto;
 
-import com.sun.istack.NotNull;
+import javax.validation.constraints.NotNull;
 
 public class MovieRequestDto {
     @NotNull

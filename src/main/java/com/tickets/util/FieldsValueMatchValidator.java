@@ -2,8 +2,8 @@ package com.tickets.util;
 
 import com.tickets.annotation.FieldsValueMatch;
 import com.tickets.model.dto.UserRequestDto;
-import jakarta.validation.ConstraintValidator;
-import jakarta.validation.ConstraintValidatorContext;
+import javax.validation.ConstraintValidator;
+import javax.validation.ConstraintValidatorContext;
 import org.springframework.beans.BeanWrapperImpl;
 
 public class FieldsValueMatchValidator

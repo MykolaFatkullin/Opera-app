@@ -1,11 +1,12 @@
 package com.tickets.annotation;
 
 import com.tickets.util.FieldsValueMatchValidator;
-import jakarta.validation.Constraint;
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
+import javax.validation.Constraint;
+import javax.validation.Payload;
 
 @Constraint(validatedBy = FieldsValueMatchValidator.class)
 @Target({ ElementType.TYPE })
@@ -13,6 +14,10 @@ import java.lang.annotation.Target;
 public @interface FieldsValueMatch {
 
     String message() default "Fields values don't match!";
+
+    Class<?>[] groups() default {};
+
+    Class<? extends Payload>[] payload() default {};
 
     String field();
 

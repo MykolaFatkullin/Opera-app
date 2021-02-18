@@ -1,9 +1,9 @@
 package com.tickets.model.dto;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.sun.istack.NotNull;
-import jakarta.validation.constraints.Min;
 import java.time.LocalDateTime;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 
 public class MovieSessionRequestDto {
     @Min(value = 1, message = "Incorrect movie Id, minimum 1")
