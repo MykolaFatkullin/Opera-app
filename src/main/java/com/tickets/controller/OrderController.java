@@ -1,7 +1,6 @@
 package com.tickets.controller;
 
 import com.tickets.model.dto.OrderResponseDto;
-import com.tickets.service.authentication.AuthenticationObjectProcessing;
 import com.tickets.service.mapper.OrderMapper;
 import com.tickets.service.model.OrderService;
 import com.tickets.service.model.ShoppingCartService;
@@ -21,29 +20,26 @@ public class OrderController {
     private final ShoppingCartService shoppingCartService;
     private final UserService userService;
     private final OrderMapper orderMapper;
-    private final AuthenticationObjectProcessing authenticationObjectProcessing;
 
     public OrderController(OrderService orderService,
                            ShoppingCartService shoppingCartService, UserService userService,
-                           OrderMapper orderMapper,
-                           AuthenticationObjectProcessing authenticationObjectProcessing) {
+                           OrderMapper orderMapper) {
         this.orderService = orderService;
         this.shoppingCartService = shoppingCartService;
         this.userService = userService;
         this.orderMapper = orderMapper;
-        this.authenticationObjectProcessing = authenticationObjectProcessing;
     }
 
     @PostMapping("/complete")
     public void completeOrder(Authentication authentication) {
-        String email = authenticationObjectProcessing.getUsername(authentication);
+        String email = authentication.getName();
         orderService.completeOrder(shoppingCartService.getByUser(userService.findByEmail(email)
                 .orElseThrow(RuntimeException::new)));
     }
 
     @GetMapping
     public List<OrderResponseDto> getOrdersHistory(Authentication authentication) {
-        String email = authenticationObjectProcessing.getUsername(authentication);
+        String email = authentication.getName();
         return orderService.getOrdersHistory(userService.findByEmail(email)
                 .orElseThrow(RuntimeException::new))
                 .stream()
