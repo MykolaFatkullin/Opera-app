@@ -1,11 +1,14 @@
 package com.tickets.model.dto;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import java.time.LocalDateTime;
 import java.util.List;
 
 public class OrderResponseDto {
     private Long id;
     private List<Long> ticketsIds;
-    private String orderDate;
+    @JsonFormat(pattern = "dd.MM.yyyy HH:mm")
+    private LocalDateTime orderDate;
 
     public Long getId() {
         return id;
@@ -23,11 +26,11 @@ public class OrderResponseDto {
         this.ticketsIds = ticketsIds;
     }
 
-    public String getOrderDate() {
+    public LocalDateTime getOrderDate() {
         return orderDate;
     }
 
-    public void setOrderDate(String orderDate) {
+    public void setOrderDate(LocalDateTime orderDate) {
         this.orderDate = orderDate;
     }
 }

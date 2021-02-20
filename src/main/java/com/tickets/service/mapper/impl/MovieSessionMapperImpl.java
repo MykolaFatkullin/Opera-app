@@ -8,13 +8,10 @@ import com.tickets.model.dto.MovieSessionResponseDto;
 import com.tickets.service.mapper.MovieSessionMapper;
 import com.tickets.service.model.CinemaHallService;
 import com.tickets.service.model.MovieService;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import org.springframework.stereotype.Component;
 
 @Component
 public class MovieSessionMapperImpl implements MovieSessionMapper {
-    private static final String DATE_FORMAT = "dd.MM.yyyy HH:mm";
     private final MovieService movieService;
     private final CinemaHallService cinemaHallService;
 
@@ -30,21 +27,18 @@ public class MovieSessionMapperImpl implements MovieSessionMapper {
         movieSessionResponseDto.setMovieDescription(movieSession.getMovie().getDescription());
         movieSessionResponseDto.setCinemaHallDescription(movieSession.getCinemaHall()
                 .getDescription());
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern(DATE_FORMAT);
-        movieSessionResponseDto.setShowTime(movieSession.getShowTime().format(formatter));
+        movieSessionResponseDto.setShowTime(movieSession.getShowTime());
         return movieSessionResponseDto;
     }
 
     @Override
     public MovieSession mapToEntity(MovieSessionRequestDto movieSessionRequestDto) {
-        Movie movie = movieService.getById(Long.valueOf(movieSessionRequestDto.getMovieId()));
-        CinemaHall cinemaHall = cinemaHallService.getById(Long.valueOf(
-                movieSessionRequestDto.getCinemaHallId()));
+        Movie movie = movieService.getById(movieSessionRequestDto.getMovieId());
+        CinemaHall cinemaHall = cinemaHallService.getById(movieSessionRequestDto.getCinemaHallId());
         MovieSession movieSession = new MovieSession();
         movieSession.setMovie(movie);
         movieSession.setCinemaHall(cinemaHall);
-        movieSession.setShowTime(LocalDateTime.parse(movieSessionRequestDto.getShowTime(),
-                DateTimeFormatter.ofPattern(DATE_FORMAT)));
+        movieSession.setShowTime(movieSessionRequestDto.getShowTime());
         return movieSession;
     }
 }

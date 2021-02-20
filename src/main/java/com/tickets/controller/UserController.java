@@ -4,9 +4,9 @@ import com.tickets.model.User;
 import com.tickets.model.dto.UserResponseDto;
 import com.tickets.service.mapper.UserMapper;
 import com.tickets.service.model.UserService;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -21,7 +21,8 @@ public class UserController {
     }
 
     @GetMapping("/by-email")
-    public UserResponseDto getByEmail(@RequestParam String email) {
+    public UserResponseDto getByEmail(Authentication authentication) {
+        String email = authentication.getName();
         User user = userService.findByEmail(email).orElseThrow(RuntimeException::new);
         return userMapper.mapToDto(user);
     }

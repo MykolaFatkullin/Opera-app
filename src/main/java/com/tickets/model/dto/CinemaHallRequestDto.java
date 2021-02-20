@@ -1,7 +1,12 @@
 package com.tickets.model.dto;
 
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+
 public class CinemaHallRequestDto {
+    @Min(value = 1, message = "Incorrect capacity, minimum 1")
     private int capacity;
+    @NotNull
     private String description;
 
     public int getCapacity() {
