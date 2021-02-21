@@ -29,7 +29,6 @@ public class CustomUserDetailService implements UserDetailsService {
                 .map(role -> role.getRoles().toString())
                 .toArray(String[]::new);
         userBuilder.roles(roles);
-        System.out.println(userBuilder);
         return userBuilder.build();
     }
 }
