@@ -1,6 +1,5 @@
 package com.tickets.config;
 
-import com.tickets.model.Roles;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
