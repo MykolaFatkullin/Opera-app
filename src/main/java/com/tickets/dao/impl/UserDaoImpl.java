@@ -43,7 +43,7 @@ public class UserDaoImpl implements UserDao {
     public Optional<User> getByEmail(String email) {
         try (Session session = sessionFactory.openSession()) {
             return session
-                    .createQuery("FROM User u LEFT JOIN FETCH u.roles WHERE u.email = :email ",
+                    .createQuery("FROM User u INNER JOIN FETCH u.roles WHERE u.email = :email ",
                             User.class)
                     .setParameter("email", email)
                     .uniqueResultOptional();
