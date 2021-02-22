@@ -1,37 +1,36 @@
 package com.tickets.dao.impl;
 
-import com.tickets.dao.UserDao;
+import com.tickets.dao.RoleDao;
 import com.tickets.exception.DataProcessingException;
-import com.tickets.model.User;
-import java.util.Optional;
+import com.tickets.model.Role;
+import com.tickets.model.Roles;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
-import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Component;
 
-@Repository
-public class UserDaoImpl implements UserDao {
+@Component
+public class RoleDaoImpl implements RoleDao {
     private final SessionFactory sessionFactory;
 
-    public UserDaoImpl(SessionFactory sessionFactory) {
+    public RoleDaoImpl(SessionFactory sessionFactory) {
         this.sessionFactory = sessionFactory;
     }
 
     @Override
-    public User add(User user) {
+    public void add(Role role) {
         Transaction transaction = null;
         Session session = null;
         try {
             session = sessionFactory.openSession();
             transaction = session.beginTransaction();
-            session.save(user);
+            session.save(role);
             transaction.commit();
-            return user;
         } catch (Exception e) {
             if (transaction != null) {
                 transaction.rollback();
             }
-            throw new DataProcessingException("Can't insert User entity: " + user, e);
+            throw new DataProcessingException("Can't insert role entity: " + role, e);
         } finally {
             if (session != null) {
                 session.close();
@@ -40,15 +39,14 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
-    public Optional<User> getByEmail(String email) {
+    public Role getRoleByName(String roleName) {
         try (Session session = sessionFactory.openSession()) {
             return session
-                    .createQuery("FROM User u INNER JOIN FETCH u.roles WHERE u.email = :email ",
-                            User.class)
-                    .setParameter("email", email)
-                    .uniqueResultOptional();
+                    .createQuery("FROM Role WHERE role = :role", Role.class)
+                    .setParameter("role", Roles.valueOf(roleName))
+                    .uniqueResult();
         } catch (Exception e) {
-            throw new DataProcessingException("Can't get user by email: " + email, e);
+            throw new DataProcessingException("Can't get role by name: " + roleName, e);
         }
     }
 }
