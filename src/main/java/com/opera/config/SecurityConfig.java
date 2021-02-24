@@ -31,6 +31,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         httpSecurity
                 .authorizeRequests()
                 .antMatchers(HttpMethod.POST, "/register").permitAll()
+                .antMatchers(HttpMethod.POST, "/orders/complete").permitAll()
+                .antMatchers(HttpMethod.POST,"/shopping-carts/performance-sessions").permitAll()
                 .antMatchers(HttpMethod.POST).hasRole("ADMIN")
                 .antMatchers(HttpMethod.DELETE).hasRole("ADMIN")
                 .antMatchers(HttpMethod.PUT).hasRole("ADMIN")
