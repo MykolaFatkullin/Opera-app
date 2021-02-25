@@ -15,7 +15,8 @@ If you look at the project, you will find there:
 - Service layers;
 - Controllers layers;
 - Models;
-- Mappers to work with the JSON format;
+- Mappers to convert Entities into DTO;
+- Mappers to convert DTO into Entity;
 - Configurations to the Spring Security, MVC, etc.
 
 Also, this project contains 2 roles for users. The first role is User. User can:
