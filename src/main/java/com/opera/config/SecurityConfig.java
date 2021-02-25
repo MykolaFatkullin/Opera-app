@@ -31,10 +31,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         httpSecurity
                 .authorizeRequests()
                 .antMatchers(HttpMethod.POST, "/register").permitAll()
+                .antMatchers(HttpMethod.POST, "/orders/complete").authenticated()
+                .antMatchers(HttpMethod.POST,"/shopping-carts/performance-sessions").authenticated()
                 .antMatchers(HttpMethod.POST).hasRole("ADMIN")
                 .antMatchers(HttpMethod.DELETE).hasRole("ADMIN")
                 .antMatchers(HttpMethod.PUT).hasRole("ADMIN")
-                .antMatchers(HttpMethod.GET).permitAll()
+                .antMatchers(HttpMethod.GET).authenticated()
                 .anyRequest()
                 .authenticated()
                 .and()
