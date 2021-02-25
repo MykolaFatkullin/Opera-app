@@ -15,7 +15,7 @@ If you look at the project, you will find there:
 - Service layers;
 - Controllers layers;
 - Models;
-- Custom exception to work with the DB;
+- Mappers to work with the JSON format;
 - Configurations to the Spring Security, MVC, etc.
 
 Also, this project contains 2 roles for users. The first role is User. User can:
